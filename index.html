@@ -6,6 +6,8 @@
     <title>你是来弄啥嘞？</title>
     <link rel="icon" href="https://www.bilibili.com/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="https://www.bilibili.com/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
@@ -145,9 +147,120 @@
                 display: none;
             }
         }
+
+        .love-title {
+            font-family: 'Zhi Mang Xing', cursive;
+            font-size: 64px;
+            background: linear-gradient(45deg, #fb7299, #00a1d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            padding: 0 60px;
+        }
+
+        .love-title::before,
+        .love-title::after {
+            content: '♡';
+            font-size: 40px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .love-title::before {
+            left: 0;
+            color: #fb7299;
+        }
+
+        .love-title::after {
+            right: 0;
+            color: #00a1d6;
+        }
+
+        .love-title::after {
+            content: '♡';
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.1); }
+        }
+
+        .love-title::before {
+            content: '✿';
+        }
+
+        .love-title::after {
+            content: '✿';
+        }
+
+        .love-title span {
+            position: relative;
+        }
+
+        .love-title span::before,
+        .love-title span::after {
+            content: '•';
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fb7299;
+        }
+
+        .love-title span::before {
+            left: -20px;
+        }
+
+        .love-title span::after {
+            right: -20px;
+            color: #00a1d6;
+        }
+
+        @media (max-width: 600px) {
+            .love-title {
+                font-size: 48px;
+                padding: 0 40px;
+            }
+            .love-title::before,
+            .love-title::after {
+                font-size: 30px;
+            }
+            .love-title span::before,
+            .love-title span::after {
+                font-size: 18px;
+            }
+            .love-title span::before {
+                left: -15px;
+            }
+            .love-title span::after {
+                right: -15px;
+            }
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 24px; /* 增大字体大小 */
+            color: #ff4081;
+            opacity: 0;
+            animation: float 5s ease-in-out infinite; /* 增加动画时间 */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-150px); opacity: 0; } /* 增加上升高度 */
+        }
     </style>
 </head>
 <body>
+    <h1 class="love-title">马漂亮</h1>
     <div class="search-container">
         <form class="search-form" action="https://search.bilibili.com/all" method="get">
             <input type="text" name="keyword" class="search-input" placeholder="你是来弄啥嘞" required>
@@ -176,5 +289,19 @@
     <div class="decoration square top-right"></div>
     <div class="decoration triangle bottom-left"></div>
     <div class="decoration circle bottom-right"></div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 4 + 's'; // 增加动画持续时间
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 6000); // 增加移除时间
+        }
+        setInterval(createHeart, 300);
+    </script>
 </body>
 </html>
