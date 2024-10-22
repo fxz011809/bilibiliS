@@ -3,12 +3,12 @@ function createHeart() {
     heart.classList.add('heart');
     heart.innerHTML = '❤';
 
-    if (Math.random() > 0.625) { // 37.5% 的概率围绕图片 (原来是 50%)
+    if (Math.random() > 0.625) { // 37.5% 的概率围绕图片
         heart.classList.add('heart-surround');
         const imageRect = document.querySelector('.title-image').getBoundingClientRect();
         const centerX = imageRect.left + imageRect.width / 2;
         const centerY = imageRect.top + imageRect.height / 2;
-        const radius = Math.max(imageRect.width, imageRect.height) / 2 + 20; // 调整半径
+        const radius = Math.max(imageRect.width, imageRect.height) / 2 + 20;
 
         const angle = Math.random() * Math.PI * 2;
         const startX = centerX + Math.cos(angle) * radius;
@@ -20,7 +20,7 @@ function createHeart() {
         heart.style.setProperty('--start-x', `${startX - centerX}px`);
         heart.style.setProperty('--start-y', `${startY - centerY}px`);
         heart.style.setProperty('--end-x', `${endX - centerX}px`);
-        heart.style.setProperty('--end-y', `${endY - centerX}px`);
+        heart.style.setProperty('--end-y', `${endY - centerY}px`);
 
         heart.style.left = `${centerX}px`;
         heart.style.top = `${centerY}px`;
@@ -39,6 +39,9 @@ function createHeart() {
 }
 
 function createFloatingHeart() {
+    const existingHearts = document.querySelectorAll('.heart-floating');
+    if (existingHearts.length >= 5) return; // 将最大心心数量从10减少到5
+
     const heart = document.createElement('div');
     heart.classList.add('heart', 'heart-floating');
     heart.innerHTML = '❤';
@@ -51,8 +54,9 @@ function createFloatingHeart() {
     }, 5000);
 }
 
+// 确保这两行代码在文件的最外层，不在任何函数内部
 setInterval(createHeart, 50); // 每50毫秒创建一个心形
-setInterval(createFloatingHeart, 225); // 每225毫秒创建一个向上飘动的心形 (原来是300)
+setInterval(createFloatingHeart, 900); // 每900毫秒创建一个向上飘动的心形
 
 // 配置 xf-MusicPlayer
 document.addEventListener('DOMContentLoaded', function() {
@@ -95,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 默认音量
         defaultVolume: 50,
         // 播放模式 (loop: 循环播放, random: 随机播放, order: 顺序播放)
-        playMode: 'order'
+        playMode: 'random' // 改为随机播放以匹配HTML中的data-random="true"
     });
 });
 

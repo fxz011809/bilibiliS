@@ -174,14 +174,14 @@ body {
 
 @keyframes floatUp {
     0% { 
-        transform: translateY(100vh);
+        transform: translateY(0);
         opacity: 0;
     }
     20% {
         opacity: 1;
     }
     100% { 
-        transform: translateY(-20vh);
+        transform: translateY(-100vh);
         opacity: 0;
     }
 }
@@ -247,4 +247,8 @@ body {
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+}
+
+.heart-floating {
+    animation: floatUp 5s ease-in-out;
 }
