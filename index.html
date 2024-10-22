@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你是来弄啥嘞？</title>
+    <link rel="icon" href="https://www.bilibili.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://www.bilibili.com/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+            background-color: #f1f2f3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .search-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .search-form {
+            display: flex;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #e3e5e7;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        .search-button {
+            background-color: #00a1d6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+        }
+        .search-button:hover {
+            background-color: #0086b3;
+        }
+        .decoration {
+            position: fixed;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #00a1d6;
+        }
+        .square {
+            width: 80px;
+            height: 80px;
+            background-color: #fb7299;
+            transform: rotate(45deg);
+        }
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 86.6px solid #ffc800;
+        }
+        .top-left { top: 5%; left: 5%; }
+        .top-right { top: 5%; right: 5%; }
+        .bottom-left { bottom: 5%; left: 5%; }
+        .bottom-right { bottom: 5%; right: 5%; }
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        .nav-item {
+            flex: 1;
+            min-width: 60px;
+            margin: 5px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+        }
+        .nav-item img {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.3s ease;
+            margin-bottom: 5px;
+            object-fit: contain;
+        }
+        .nav-item:hover img {
+            transform: scale(1.1);
+        }
+        .nav-item span {
+            display: block;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .search-container {
+                padding: 15px;
+            }
+            .search-input {
+                font-size: 14px;
+            }
+            .search-button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            .nav-bar {
+                padding: 5px;
+                justify-content: space-around;
+            }
+            .nav-item {
+                margin: 2px;
+                min-width: 40px;
+            }
+            .nav-item img {
+                width: 24px;
+                height: 24px;
+            }
+            .nav-item span {
+                font-size: 10px;
+            }
+            .decoration {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <form class="search-form" action="https://search.bilibili.com/all" method="get">
+            <input type="text" name="keyword" class="search-input" placeholder="你是来弄啥嘞" required>
+            <button type="submit" class="search-button">搜索</button>
+        </form>
+    </div>
+    <nav class="nav-bar">
+        <a href="https://earth.fm/" class="nav-item" target="_blank">
+            <img src="https://earth.fm/favicon-32x32.png?v=298b03e55d06c3b9cdb2b557b8559339" alt="地球之声">
+            <span>地球之声</span>
+        </a>
+        <a href="https://space.bilibili.com/385670211" class="nav-item" target="_blank">
+            <img src="https://www.bilibili.com/favicon.ico" alt="秋芝2046">
+            <span>秋芝2046</span>
+        </a>
+        <a href="https://sota.jiqizhixin.com/xt-terminal" class="nav-item" target="_blank">
+            <img src="https://sota.jiqizhixin.com/favicon.ico" alt="小土同学">
+            <span>小土同学</span>
+        </a>
+        <a href="https://kimi.moonshot.cn/" class="nav-item" target="_blank">
+            <img src="https://statics.moonshot.cn/kimi-chat/favicon.ico" alt="Kimi AI">
+            <span>Kimi AI</span>
+        </a>
+    </nav>
+    <div class="decoration circle top-left"></div>
+    <div class="decoration square top-right"></div>
+    <div class="decoration triangle bottom-left"></div>
+    <div class="decoration circle bottom-right"></div>
+</body>
+</html>
